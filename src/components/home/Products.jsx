@@ -9,7 +9,7 @@ import { addToCart } from "../../redux/amazonSlice";
 const Products = () => {
   const despatch = useDispatch();
   const data = useLoaderData();
-  const productData = data.data;
+  const productData = data.data.products;
   return (
     <div className="max-w-screen-2xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 px-4 mx-auto">
       {productData.map((item) => (
@@ -19,7 +19,7 @@ const Products = () => {
           </span>
           <div className="w-full h-auto flex items-center justify-center relative group">
             <img
-              src={item.image}
+              src={item.images[0]}
               alt="product-img"
               className="w-52 h-64 object-contain"
             />
