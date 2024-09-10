@@ -16,21 +16,23 @@ const FooterBottom = () => {
             </div>
           ))}
         </div>
-        <div className="mx-auto pt-10 flex flex-col items-center justify-center gap-2 text-xs text-zinc-200">
-          <div className="flex items-center gap-6">
-            <p className=" hover:underline  underline-offset-1 duration-100">
+        <div className=" pt-10 text-xs text-zinc-200">
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <p className=" hover:underline hover:text-blue-500 underline-offset-1 duration-100">
               Conditions of Use
             </p>
-            <p className=" hover:underline  underline-offset-1 duration-100">
+            <p className=" hover:underline hover:text-blue-500 underline-offset-1 duration-100">
               Privacy Notice
             </p>
-            <p className=" hover:underline  underline-offset-1 duration-100">
+            <p className=" hover:underline hover:text-blue-500 underline-offset-1 duration-100">
               Consumer Health Data Privacy Disclosure
             </p>
-            <p className=" hover:underline  underline-offset-1 duration-100">
+            <p className=" hover:underline hover:text-blue-500 underline-offset-1 duration-100">
               Your Ads Privacy Choices
             </p>
           </div>
+        </div>
+        <div className="text-xs text-zinc-200 pt-8 flex items-center justify-center">
           <p className="">© 1996-2024, Amazon.com, Inc. or its affiliates</p>
         </div>
       </div>

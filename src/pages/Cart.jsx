@@ -10,6 +10,7 @@ import {
   resetCart,
 } from "../redux/amazonSlice";
 import { emptyCart } from "../assets";
+import toast from "react-hot-toast";
 
 const Cart = () => {
   const despatch = useDispatch();
@@ -41,7 +42,7 @@ const Cart = () => {
                   <div className="w-1/5">
                     <img
                       src={item.image}
-                      alt="item-img"
+                      alt="product-img"
                       className="w-full h-44 object-contain"
                     />
                   </div>
@@ -74,7 +75,15 @@ const Cart = () => {
                       </p>
                     </div>
                     <button
-                      onClick={() => despatch(deleteItem(item.id))}
+                      onClick={() =>
+                        despatch(deleteItem(item.id)) &&
+                        toast.error(
+                          `${item?.title.substring(
+                            0,
+                            15
+                          )} deleted successfully!`
+                        )
+                      }
                       className="bg-red-500 rounded-lg mt-2 py-1 w-36 text-white hover:bg-red-700 active:bg-red-900 duration-200"
                     >
                       Delete item

@@ -5,11 +5,13 @@ import { IoMdHeart, IoMdStar } from "react-icons/io";
 import { MdOutlineApi } from "react-icons/md";
 import { TbShoppingCartFilled } from "react-icons/tb";
 import { addToCart } from "../../redux/amazonSlice";
+import toast, { Toaster } from "react-hot-toast";
 
 const Products = () => {
   const despatch = useDispatch();
   const data = useLoaderData();
   const productData = data.data.products;
+  console.log(productData);
   return (
     <div className="max-w-screen-2xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 px-4 mx-auto">
       {productData.map((item) => (
@@ -21,6 +23,7 @@ const Products = () => {
             <img
               src={item.images[0]}
               alt="product-img"
+              loading="lazy"
               className="w-52 h-64 object-contain"
             />
             <ul className="absolute w-full h-36 bg-gray-100 -bottom-[157px] font-titleFont px-2 flex flex-col items-end justify-center gap-2 group-hover:bottom-0  duration-700 border-r border-l ">
@@ -60,8 +63,8 @@ const Products = () => {
               </p>
             </div>
             <div className="">
-              <p className="text-sm text-amazon_light">
-                {item.description.substring(0, 90)}...
+              <p className="text-sm text-amazon_light line-clamp-2">
+                {item.description}
               </p>
               <div className="text-yellow-500 flex items-center text-lg mt-1">
                 <IoMdStar />
@@ -83,6 +86,9 @@ const Products = () => {
                     category: item.category,
                     quantity: 1,
                   })
+                ) &&
+                toast.success(
+                  `${item?.title.substring(0, 15)} added successfully!`
                 )
               }
             >
@@ -91,6 +97,7 @@ const Products = () => {
           </div>
         </div>
       ))}
+      <Toaster />
     </div>
   );
 };
